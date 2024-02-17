@@ -1,10 +1,85 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>AIO</title>
 </head>
+
 <body>
+<div class="container">
+    {% csrf_token %}
+    <div class="input-container">
+        <label for="inputField">Введите текст:</label>
+        <input type="text" id="userMessage" placeholder="Что Вы бы хотели у меня спросить?">
+        <button id="sendUserMessage">Отправить</button>
+    </div>
+
+    <div class="output-container">
+        <label>Ответ AIO Chat:</label>
+        <div class="output" id="chatResponse"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="input-container">
+        <label for="inputField">Введите указание для изображения:</label>
+        <input type="text" id="userPrompt" placeholder="Какое изображение Вы бы хотели сгенерировать?">
+        <button id="sendUserPrompt">Ок</button>
+    </div>
+
+    <div class="output-container">
+        <label>Ответ AIO Image:</label>
+        <img id="imageResponse" alt="Generated Image">
+    </div>
+</div>
+
+<div class="container">
+    <div class="input-container">
+        <label for="inputField">Введите текст для озвучивания:</label>
+        <input type="text" id="userText" placeholder="Какой текст Вы хотите озвучить?">
+        <button id="sendUserText">Озвучить</button>
+    </div>
+
+    <audio controls>
+            <source id="audioVoice" src="{% static 'speech.mp3' %}" type="audio/mp3">
+    </audio>
+</div>
+
+<div class="container">
+
+    <div class="input-container">
+        <label for="inputField">ФИО:</label>
+        <input type="text" id="userName" placeholder="Иван Германович Дойчевич">
+    </div>
+
+    <div class="input-container">
+        <label for="inputField">Опыт работы (в годах):</label>
+        <input type="text" id="userExperience" placeholder="5">
+    </div>
+
+    <div class="input-container">
+        <label for="inputField">Образование:</label>
+        <input type="text" id="userEducation" placeholder="Высшее образование">
+    </div>
+
+    <div class="input-container">
+        <label for="inputField">Владение языками:</label>
+        <input type="text" id="userLanguages" placeholder="Русский, Английский">
+        <button id="createCV">Создать резюме</button>
+    </div>
+
+    <div class="output-container">
+        <label>Резюме:</label>
+        <div class="outputCV" id="CVOutput">аа</div>
+    </div>
+
+</div>
 
 </body>
+
+<script src="{% static 'scripts/aio_chat_handler.js' %}"></script>
 </html>
